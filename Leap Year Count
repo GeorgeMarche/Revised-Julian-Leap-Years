@@ -1,0 +1,54 @@
+import time as t
+
+y1 = int(input("Enter the starting year: \n"))
+y2 = int(input("Enter the ending year: \n"))
+n_ly = 0
+
+t1 = t.time()
+# Find all 4th years, add them
+y1_c = y1
+while y1_c < y2:
+    if y1_c % 4 == 0:
+        n_ly += 1 if y2 % 4 != 0 else 0
+        break
+    y1_c += 1
+        
+n_ly += int((y2 - y1_c) / 4)
+
+# Find all 100th years, subtract them
+y1_c = y1
+while y1_c < y2:
+    if y1_c % 100 == 0:
+        n_ly -= 1 if y2 % 100 != 0 else 0
+        break
+    y1_c += 1
+    
+n_ly -= int((y2 - y1_c) / 100)
+
+# Find all numbers with remainder 200 and 600 when divisible by 900
+y1_c = y1
+while y1_c < y2:
+    if y1_c % 900 == 200:
+        n_ly += 1 if y2 % 900 != 200 else 0
+        break
+    y1_c += 1
+    
+n_ly += int((y2 - y1_c) / 900)
+
+if y1_c - 500 >= y1:
+    y1_c -= 500
+    n_ly += 1 if y2 % 900 != 600 else 0
+elif y1_c + 400 < y2:
+    y1_c += 400
+    n_ly += 1 if y2 % 900 != 600 else 0
+    
+n_ly += int((y2 - y1_c) / 900)
+
+#Print the number of leap years
+print(n_ly)
+t2 = t.time()
+print(t2 - t1)
+    
+    
+
+    
